@@ -7,7 +7,7 @@ stages:
   - build
 
 variables:
-  CONTAINER_IMAGE: $CI_REGISTRY/nextthingco/chiptainer_debian:latest
+  CONTAINER_IMAGE: $CI_REGISTRY/$CI_PROJECT_PATH:$CI_BUILD_REF_NAME
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
@@ -16,6 +16,4 @@ build:
   stage: build
   script:
     - ./build.sh
-#    - wget http://kaplan2539.gitlab.io/baumeister/qemu-arm-static.tar.gz 
-#    - docker build -t $CONTAINER_IMAGE .
     - docker push $CONTAINER_IMAGE
