@@ -11,13 +11,11 @@ variables:
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-  - echo "CI_REGISTRY=$CI_REGISTRY"
-  - echo "CI_REGISTRY_IMAGE=$CI_REGISTRY_IMAGE"
-  - echo "CONTAINER_IMAGE=$CONTAINER_IMAGE"
 
 build:
   stage: build
   script:
-    - wget http://kaplan2539.gitlab.io/baumeister/qemu-arm-static.tar.gz 
-    - docker build -t $CONTAINER_IMAGE .
+    - ./build.sh
+#    - wget http://kaplan2539.gitlab.io/baumeister/qemu-arm-static.tar.gz 
+#    - docker build -t $CONTAINER_IMAGE .
     - docker push $CONTAINER_IMAGE

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 QEMU_STATIC_URL=http://kaplan2539.gitlab.io/baumeister/qemu-arm-static.tar.gz
 
